@@ -18,7 +18,7 @@ server.post('/sign-up', (req,res)=>{
 
 server.get('/tweets', (req,res)=>{
     
-    function reorganizedTweets(){vgft
+    function reorganizedTweets(){
         return [...tweets].reverse();
     }
 
