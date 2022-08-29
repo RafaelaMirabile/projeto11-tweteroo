@@ -6,12 +6,36 @@ server.use(express.json());
 server.use(cors());
 
 let users= [];
+let tweets=[];
+
 
 server.post('/sign-up', (req,res)=>{
-    const idUser = users.length;
-    const newUser ={id: idUser, ...req.body};
-    users.push(newUser);
-    console.log(users);
+    const {username,avatar}= req.body;
+    users.push({username,avatar});    
+    
+    res.send('OK');
+})
+
+server.get('/tweets', (req,res)=>{
+    
+    function reorganizedTweets(){vgft
+        return [...tweets].reverse();
+    }
+
+    if(tweets.length <= 10){
+        res.send(reorganizedTweets());
+    }
+})
+
+
+server.post('/tweets',(req,res)=>{    
+    
+    const {username,tweet} = req.body;
+    const {avatar} = users.find(user=> user.username === username);   
+    
+    tweets.push({username,tweet,avatar});
+    
+    res.send('OK');
 })
 
 
